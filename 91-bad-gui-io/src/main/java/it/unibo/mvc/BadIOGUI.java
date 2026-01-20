@@ -10,11 +10,14 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -79,11 +82,22 @@ public class BadIOGUI {
                 }
             }
         );
+        /**
+         * Part 3
+         */
         read.addActionListener(
             new ActionListener() {
                 @Override
                 public void actionPerformed(final ActionEvent a) {
-                    System.out.println(PATH);
+                    try {
+                        final List<String> lines = Files.readAllLines(new File(PATH).toPath());
+                        for (String line : lines) {
+                            System.out.println(line);
+                        }
+                    } catch (final IOException e) {
+                        JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                        e.printStackTrace(); 
+                    }
                 }
             }
         );
