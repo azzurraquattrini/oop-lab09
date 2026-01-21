@@ -29,7 +29,7 @@ public final class SimpleGUI {
         frame.setSize(sw/2, sh/2); 
         frame.setLocationByPlatform(true);
 
-        final JPanel panel = new JPanel(new BorderLayout());
+        final JPanel centerPanel = new JPanel(new BorderLayout());
         final JTextArea textArea = new JTextArea();
         final JButton save = new JButton("Save");
         save.addActionListener(
@@ -47,9 +47,9 @@ public final class SimpleGUI {
             }
         );
         
-        panel.add(textArea, BorderLayout.CENTER);
-        panel.add(save, BorderLayout.SOUTH);
-        frame.setContentPane(panel);
+        centerPanel.add(textArea, BorderLayout.CENTER);
+        centerPanel.add(save, BorderLayout.SOUTH);
+        frame.setContentPane(centerPanel);
     }
 
     public void display() {
